@@ -21,7 +21,7 @@ function generarID() {
 app.use(cors());
 
 app.use(cors({
-    origin: 'http://localhost:3001', //solo permitir solicitudes desde http://localhost:3001 que es el react pero es cuando usaba 2 servidores (server2.js es un servidor que usaba antes, el oficial es server.js)
+    origin: 'http://localhost:3000', //solo permitir solicitudes desde http://localhost:3001 que es el react pero es cuando usaba 2 servidores (server2.js es un servidor que usaba antes, el oficial es server.js)
     methods: ['GET', 'POST'], //solo permitir los metodos GET y POST
     allowedHeaders: ['Content-Type'], //solo permitir el encabezado content-type
 }));
