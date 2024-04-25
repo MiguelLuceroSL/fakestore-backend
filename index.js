@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./traslate.js');
 const { primeraLetra } = require('./first.js');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
