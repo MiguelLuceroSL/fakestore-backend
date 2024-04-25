@@ -13,6 +13,17 @@ const PORT = process.env.PORT || 3000;
 
 
 app.use(cors());
+
+app.use(cors({
+    origin: 'https://fakestore-frontend-gamma.vercel.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+}));
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 app.use(express.json()); // middleware para parsear JSON en las solicitudes
 
 //leer el json descuentos
