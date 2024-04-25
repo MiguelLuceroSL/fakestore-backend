@@ -14,7 +14,10 @@ const PORT = process.env.PORT || 3000;
 var descuentosRaw = readFileSync('./descuentos.json');
 var descuentos = JSON.parse(descuentosRaw);
 
-app.use(cors());
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 app.use(express.json());
 
 function generarID() {
