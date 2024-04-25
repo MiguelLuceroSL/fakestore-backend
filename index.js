@@ -86,7 +86,20 @@ app.get('/productos/:id', async (req, res) => {
     }
 });
 
-app.get('/productosA', async (req, res) => {
+app.get('prueba', (req, res) => {
+    const htmlResponse = `
+        <html>
+            <head>
+                <title>Nodejs y Express en Vercel</title>
+            </head>
+            <body>
+                <h1>Soy un proyecto backend en Vercel :)</h1>
+            </body>
+    `;
+    res.send(htmlResponse);
+})
+
+app.get('/productos', async (req, res) => {
     try {
         const { category } = req.query; //obtengo la categoria
         let url = 'https://fakestoreapi.com/products'; //url para fetch
