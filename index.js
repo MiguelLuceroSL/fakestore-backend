@@ -1,7 +1,7 @@
 /*SERVER OFICIAL*/
 const express = require('express');
 const fetch = require('node-fetch');
-const { readFileSync } = require('fs');
+const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./traslate.js');
 const { primeraLetra } = require('./first.js');
 const path = require('path');

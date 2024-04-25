@@ -101,5 +101,23 @@
             "count": 5
         },
         "idCompra": "nl2i0bwao"
+    },
+    {
+        "0": {
+            "id": 8,
+            "title": "Búho perforado de acero inoxidable chapado en oro rosa doble",
+            "price": 10.99,
+            "description": "Pendientes tipo túnel acampanados dobles chapados en oro rosa. Hecho de acero inoxidable 316L",
+            "category": "Joyería",
+            "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+            "rating": {
+                "rate": 1.9,
+                "count": 100
+            },
+            "precioConDescuentoAplicado": 10.99,
+            "tieneDescuento": false,
+            "count": 10
+        },
+        "idCompra": "6s1vyzyik"
     }
 ]
