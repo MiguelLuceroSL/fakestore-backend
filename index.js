@@ -90,11 +90,11 @@ app.get('/productos/:id', async (req, res) => {
 });
 
 app.get('/productos', async (req, res) => {
-    const { category } = req.query; //obtengo la categoria
-    let url = 'https://fakestoreapi.com/products'; //url para fetch
     try {
+        const { category } = req.query; //obtengo la categoria
+        let url = 'https://fakestoreapi.com/products'; //url para fetch
         if (category) {
-            url += `/category/${category}`; //concateno la url+categoria siesque hay
+            url += `/category/${encodeURIComponent(category)}` //concateno la url+categoria siesque hay
         }
         const response = await fetch(url); //hago el fetch
         let productos = await response.json(); //convierto a json
