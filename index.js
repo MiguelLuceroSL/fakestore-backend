@@ -10,6 +10,11 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+
+app.use(cors());
+app.use(express.json()); // middleware para parsear JSON en las solicitudes
+
 //leer el json descuentos
 var descuentosRaw = readFileSync('./descuentos.json');
 var descuentos = JSON.parse(descuentosRaw);
@@ -17,11 +22,6 @@ var descuentos = JSON.parse(descuentosRaw);
 function generarID() {
     return Math.random().toString(36).substr(2, 9);
 }
-
-app.use(cors());
-app.use(express.json()); // middleware para parsear JSON en las solicitudes
-
-
 
 app.post('/comprar', (req, res) => {
     try {
