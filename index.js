@@ -1,7 +1,7 @@
-/*SERVER OFICIAL*/
+// SERVIDOR ANTES DE MEZCLARLO CON REACT
 const express = require('express');
 const fetch = require('node-fetch');
-const { readFileSync } = require('fs');
+const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./traslate.js');
 const { primeraLetra } = require('./first.js');
 const cors = require('cors');
@@ -14,19 +14,34 @@ const PORT = process.env.PORT || 3000;
 var descuentosRaw = readFileSync('./descuentos.json');
 var descuentos = JSON.parse(descuentosRaw);
 
-
-app.use(express.json());
-app.use(cors());
 function generarID() {
     return Math.random().toString(36).substr(2, 9);
 }
 
-//middleware para servir archivos estáticos desde la carpeta 'build'
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(cors());
+
+app.use(cors({
+    origin: 'https://fakestore-frontend-gamma.vercel.app', //solo permitir solicitudes desde ahi
+    methods: ['GET', 'POST'], //solo permitir los metodos GET y POST
+    allowedHeaders: ['Content-Type'], //solo permitir el encabezado content-type
+}));
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
+//middleware para permitir solicitudes de diferentes dominios (CORS)
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); //permitir solicitudes desde cualquier origen (CORS)
+    next(); //llamar a la siguiente función en la cadena de middleware
+});
+app.use(express.json()); // middleware para parsear JSON en las solicitudes
+
+
 
 app.post('/comprar', (req, res) => {
-    const nuevosProductos = req.body; //obtengo los nuevos productos
     try {
+        const nuevosProductos = req.body; //obtengo los nuevos productos
         //leo los productos que ya fueron comprados y ya estan en el json
         const productosExistentesRaw = readFileSync('productos_comprados.json');
         const productosExistentes = JSON.parse(productosExistentesRaw);
@@ -39,10 +54,12 @@ app.post('/comprar', (req, res) => {
 
         res.json({ message: 'La compra se ha realizado exitosamente.' });
     } catch (error) {
-        console.error('Error al guardar productos:', error);
+        console.error('Error al guardar productos: lol');
         res.status(500).json({ error: 'Error al guardar productos.' });
     }
 });
+
+
 
 //ruta para obtener un producto por su ID
 app.get('/productos/:id', async (req, res) => {
@@ -80,7 +97,7 @@ app.get('/productos/:id', async (req, res) => {
             producto.precioConDescuentoAplicado = producto.price;
             //le pongo el atributo ese para que tenga el precio, asi
             //en el front solo muestro el atributo ese siempre
-            producto.tieneDescuento = false; //si no hay descuento igual
+            producto.tieneDescuento = false; //si no hay descuento igual 
             //le da el atributo pero en false para manejar en el front
         }
         res.json(producto);
@@ -134,7 +151,7 @@ app.get('/productos', async (req, res) => {
                 //si no hay descuento igual le da el atributo pero en false
                 //para manejar en el front
             }
-            console.log(producto)
+
             return producto; //retorno el producto ya modificado del mapeo
         }));
 
@@ -143,10 +160,6 @@ app.get('/productos', async (req, res) => {
         console.error('Error al obtener productos:', error);
         res.status(500).json({ error: 'Error al obtener productos' });
     }
-});
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(PORT, () => {
