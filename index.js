@@ -1,4 +1,3 @@
-// SERVIDOR ANTES DE MEZCLARLO CON REACT
 const express = require('express');
 const fetch = require('node-fetch');
 const { readFileSync, writeFileSync } = require('fs');
@@ -9,7 +8,6 @@ const path = require('path');
 
 const app = express();
 app.use(cors());
-const PORT = process.env.PORT || 3000;
 
 app.use(express.json()); // middleware para parsear JSON en las solicitudes
 
@@ -144,6 +142,6 @@ app.get('/productos', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Servidor corriendo en el puerto ${process.env.PORT || 3000}`);
 });
