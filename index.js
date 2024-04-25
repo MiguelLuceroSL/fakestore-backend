@@ -1,4 +1,4 @@
-// SERVIDOR ANTES DE MEZCLARLO CON REACT
+// SERVIDOR ANTES DE MEZCLARLO CON REACT AAAAAAAAAAAAAAAAA
 const express = require('express');
 const fetch = require('node-fetch');
 const { readFileSync, writeFileSync } = require('fs');
@@ -8,7 +8,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 //leer el json descuentos
 var descuentosRaw = readFileSync('./descuentos.json');
