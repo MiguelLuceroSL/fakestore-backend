@@ -8,22 +8,9 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
-
-
-app.use(cors());
-
-app.use(cors({
-    origin: 'https://fakestore-frontend-gamma.vercel.app',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-}));
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-});
 app.use(express.json()); // middleware para parsear JSON en las solicitudes
 
 //leer el json descuentos
@@ -49,7 +36,7 @@ app.post('/comprar', (req, res) => {
 
         res.json({ message: 'La compra se ha realizado exitosamente.' });
     } catch (error) {
-        console.error('Error al guardar productos: lol');
+        console.error('Error al guardar productos:');
         res.status(500).json({ error: 'Error al guardar productos.' });
     }
 });
