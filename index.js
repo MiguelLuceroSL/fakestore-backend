@@ -132,7 +132,6 @@ app.get('/productos', async (req, res) => {
                 //si no hay descuento igual le da el atributo pero en false
                 //para manejar en el front
             }
-            console.log(producto)
             return producto; //retorno el producto ya modificado del mapeo
         }));
 
