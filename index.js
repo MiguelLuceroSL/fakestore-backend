@@ -4,11 +4,9 @@ const fetch = require('node-fetch');
 const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./traslate.js');
 const { primeraLetra } = require('./first.js');
-const cors = require('cors');
-const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 //leer el json descuentos
 var descuentosRaw = readFileSync('./descuentos.json');
@@ -16,7 +14,6 @@ var descuentos = JSON.parse(descuentosRaw);
 
 
 app.use(express.json());
-app.use(cors());
 function generarID() {
     return Math.random().toString(36).substr(2, 9);
 }
