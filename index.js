@@ -86,7 +86,7 @@ app.get('/productos/:id', async (req, res) => {
     }
 });
 
-app.get('prueba', (req, res) => {
+app.get('/prueba', (req, res) => {
     const htmlResponse = `
         <html>
             <head>
