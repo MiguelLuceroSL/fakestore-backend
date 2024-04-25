@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./traslate.js');
 const { primeraLetra } = require('./first.js');
+const cors = require('cors');
 const path = require('path');
 
 const app = express();
@@ -13,9 +14,9 @@ const PORT = process.env.PORT || 3000;
 var descuentosRaw = readFileSync('./descuentos.json');
 var descuentos = JSON.parse(descuentosRaw);
 
+
 app.use(express.json());
-
-
+app.use(cors());
 function generarID() {
     return Math.random().toString(36).substr(2, 9);
 }
@@ -57,7 +58,7 @@ app.get('/productos/:id', async (req, res) => {
         titulo = primeraLetra(titulo);
         descripcion = primeraLetra(descripcion);
         categoria = primeraLetra(categoria);
-        //asigno los nuevos valores 
+        //asigno los nuevos valores
         producto.title = titulo;
         producto.description = descripcion;
         producto.category = categoria;
@@ -133,6 +134,7 @@ app.get('/productos', async (req, res) => {
                 //si no hay descuento igual le da el atributo pero en false
                 //para manejar en el front
             }
+            console.log(producto)
             return producto; //retorno el producto ya modificado del mapeo
         }));
 
