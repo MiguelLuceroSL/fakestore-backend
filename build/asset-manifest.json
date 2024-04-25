@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.83a1bab2.css",
-    "main.js": "/static/js/main.334f88f5.js",
+    "main.js": "/static/js/main.393bc4d9.js",
     "static/media/bknlogo.png": "/static/media/bknlogo.3ad3e9382eb2e014f2ed.png",
     "index.html": "/index.html",
     "main.83a1bab2.css.map": "/static/css/main.83a1bab2.css.map",
-    "main.334f88f5.js.map": "/static/js/main.334f88f5.js.map"
+    "main.393bc4d9.js.map": "/static/js/main.393bc4d9.js.map"
   },
   "entrypoints": [
     "static/css/main.83a1bab2.css",
-    "static/js/main.334f88f5.js"
+    "static/js/main.393bc4d9.js"
   ]
 }
