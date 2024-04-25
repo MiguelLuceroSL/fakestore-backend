@@ -1,4 +1,4 @@
-/*SERVER OFICIAL*/
+/* SERVER OFICIAL */
 const express = require('express');
 const fetch = require('node-fetch');
 const { readFileSync, writeFileSync } = require('fs');
