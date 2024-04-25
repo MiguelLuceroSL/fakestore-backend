@@ -17,11 +17,6 @@ var descuentos = JSON.parse(descuentosRaw);
 app.use(cors());
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-});
-
 function generarID() {
     return Math.random().toString(36).substr(2, 9);
 }
