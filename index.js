@@ -4,7 +4,6 @@ const { readFileSync, writeFileSync } = require('fs');
 const { traducir } = require('./traslate.js');
 const { primeraLetra } = require('./first.js');
 const cors = require('cors');
-const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -87,7 +86,7 @@ app.get('/productos/:id', async (req, res) => {
     }
 });
 
-app.get('/productos', async (req, res) => {
+app.get('/productosA', async (req, res) => {
     try {
         const { category } = req.query; //obtengo la categoria
         let url = 'https://fakestoreapi.com/products'; //url para fetch
