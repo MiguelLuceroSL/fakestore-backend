@@ -14,20 +14,9 @@ const PORT = process.env.PORT || 3000;
 var descuentosRaw = readFileSync('./descuentos.json');
 var descuentos = JSON.parse(descuentosRaw);
 
-app.use(cors());
 
-app.use(cors({
-    origin: 'https://fakestore-frontend-gamma.vercel.app', //solo permitir solicitudes desde http://localhost:3001 que es el react pero es cuando usaba 2 servidores (server2.js es un servidor que usaba antes, el oficial es server.js)
-    methods: ['GET', 'POST'], //solo permitir los metodos GET y POST
-    allowedHeaders: ['Content-Type'], //solo permitir el encabezado content-type
-}));
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-});
 app.use(express.json());
-
+app.use(cors());
 function generarID() {
     return Math.random().toString(36).substr(2, 9);
 }
