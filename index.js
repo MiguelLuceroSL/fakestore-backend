@@ -57,7 +57,7 @@ app.get('/productos/:id', async (req, res) => {
         titulo = primeraLetra(titulo);
         descripcion = primeraLetra(descripcion);
         categoria = primeraLetra(categoria);
-        //asigno los nuevos valores
+        //asigno los nuevos valores 
         producto.title = titulo;
         producto.description = descripcion;
         producto.category = categoria;
