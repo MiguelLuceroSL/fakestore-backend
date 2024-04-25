@@ -19,22 +19,6 @@ function generarID() {
 }
 
 app.use(cors());
-
-app.use(cors({
-    origin: 'https://fakestore-frontend-gamma.vercel.app', //solo permitir solicitudes desde ahi
-    methods: ['GET', 'POST'], //solo permitir los metodos GET y POST
-    allowedHeaders: ['Content-Type'], //solo permitir el encabezado content-type
-}));
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-});
-//middleware para permitir solicitudes de diferentes dominios (CORS)
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*'); //permitir solicitudes desde cualquier origen (CORS)
-    next(); //llamar a la siguiente función en la cadena de middleware
-});
 app.use(express.json()); // middleware para parsear JSON en las solicitudes
 
 
